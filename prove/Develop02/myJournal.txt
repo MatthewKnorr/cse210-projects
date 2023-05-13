@@ -1,6 +1,7 @@
-
+1/23/4567, This is my Journalling file containing all saved entries,  Saves it by Date,Prompt, Response
 5/12/2023, How have you felt the sprit today? , test
 5/12/2023, What is your favorite thing to do when feeling low? , Sleep
 5/13/2023, What are three things you would like to tell a friend, family member, or partner? , Hello World
 5/13/2023, What are three things that could be better? , sleep
 5/13/2023, What was your favorite activity you did today? , test
+5/13/2023, How do you show compassion to others? , test

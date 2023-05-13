@@ -1,27 +1,34 @@
 public class Entry
 {
+    // Sets up objects
     public string _entryText;
     public string _prompt = setPrompt();
     public string _date= SetDate();
 
+
+    // Collects _entryText from user after prompt
     public Entry()
     {
         Console.Write(_prompt);
         _entryText = Console.ReadLine();
     }
     
+
+    // Loading a file's terminal output
     public Entry(string simple)
     {
         Console.WriteLine("Loading.....");
     }
 
+    // Gathers current date from .sys
     static string SetDate()
     {
         DateTime theCurrentTime = DateTime.Now;
         string dateText = theCurrentTime.ToShortDateString();
         return dateText;
     }
-
+    
+    // Randomly returns 1 of 16 prompts to display 
     static string setPrompt()
     {
         string[] prompts = {           
@@ -49,6 +56,7 @@ public class Entry
     }
 
     // Thanks to my classmate I got his working with his example!
+    // But it formats how the entry is saved and displayed
     public void Display()
     {
         Console.WriteLine($"Date: {_date}, Prompt: {_prompt}, Entry: {_entryText}");

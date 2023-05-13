@@ -1,12 +1,14 @@
 using System.IO;
 public class Files
-{
+{   
+    // Sets up objects
     public List<Entry> _addEntry = new List<Entry>();
     public List<Entry> _loadedEntry = new List<Entry>();
     public string _saveFileName;
 
-    // public void ShowAllEntries()
-    public void ShowEntries()
+
+    // Loops through _addEntry and displays each entry
+    public void ShowAllEntries()
     {   
         foreach (Entry i in _addEntry)
         {
@@ -14,7 +16,8 @@ public class Files
         }
     }
 
-    public void ShowLoadedEntries()
+    // Loops through _loadedEntry and displays each loaded entry
+    public void ShowAllLoadedEntries()
     {   
         foreach (Entry i in _loadedEntry)
         {
@@ -22,6 +25,16 @@ public class Files
         }
     }
 
+    // Displays local file names 
+    public void LoadFileName(){
+        string[] lines = System.IO.File.ReadAllLines("filenames.txt");
+        Console.WriteLine("Select one of the Available Files");
+        foreach(string line in lines){
+            Console.WriteLine($"{line}");
+        }
+    }
+
+    // Handles the loaded file and data within
     public void LoadFile(string selection)
     {
         string[] loadedEntries = System.IO.File.ReadAllLines(selection);
@@ -37,19 +50,13 @@ public class Files
         }
     }
     
-    public void LoadFileNames(){
-        string[] lines = System.IO.File.ReadAllLines("filenames.txt");
-        Console.WriteLine("Select one of the Available Files");
-        foreach(string line in lines){
-            Console.WriteLine($"{line}");
-        }
-    }
-
+    // Checks to see if it can write to the file and _saveFileName saves it to file
     public void WriteEntries(){
         bool filesExists = false;
         string fileName = _saveFileName;
 
         string[] lines = System.IO.File.ReadAllLines("filenames.txt");
+        string[] savedEntries = System.IO.File.ReadAllLines(_saveFileName);
         foreach (string line in lines)
         {
             if (line == _saveFileName)
@@ -58,20 +65,6 @@ public class Files
                 break;
             }
         }
-
-        if (!filesExists)
-        {
-            using (StreamWriter outputFile = new StreamWriter("filenames.txt"))
-            {
-                foreach (string line in lines)
-                {
-                    outputFile.WriteLine($"{line}");
-                }
-                outputFile.WriteLine($"{_saveFileName}");
-            }
-        }
-        
-        string[] savedEntries = System.IO.File.ReadAllLines(_saveFileName);
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {
             foreach (string i in savedEntries)
@@ -84,6 +77,20 @@ public class Files
                 outputFile.WriteLine($"{i._date}, {i._prompt}, {i._entryText}");
             }
         }
+        
+        // File existance check
+        if (!filesExists)
+        {
+            using (StreamWriter outputFile = new StreamWriter("filenames.txt"))
+            {
+                foreach (string line in lines)
+                {
+                    outputFile.WriteLine($"{line}");
+                }
+                outputFile.WriteLine($"{_saveFileName}");
+            }
+        }
+
         _addEntry.Clear();
     }       
 }
