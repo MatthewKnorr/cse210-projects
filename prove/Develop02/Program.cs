@@ -4,8 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        string[] menu = {"Wrte New Entry","Display Unsaved Entries","Display Loaded Entries","Save Entries","Quit Program"};
-        Console.WriteLine("Welcome TO The Program");
+        string[] menu = {"Wrte New Entry","Display Unsaved Entries","Load File","Display Loaded Entries","Save Entries","Quit Program"};
+        Console.WriteLine("Welcome To My Journalling Program!");
         bool runApp = true;
         Files listFiles = new Files();
 
@@ -37,19 +37,6 @@ class Program
                     string selection = Console.ReadLine();
                     listFiles.LoadFile(selection);
                     break;
-
-                    // string[] loadedEntries = System.IO.File.ReadAllLines(selection);
-
-                    // foreach (string line in loadedEntries)
-                    // {
-                    //     string[] parts = line.Split(",");
-                    //     Entry loadedEntry = new Entry();
-                    //     loadedEntry._date = parts[0];
-                    //     loadedEntry._prompt = parts[1];
-                    //     loadedEntry._entryText = parts[2];
-                    //     listFiles._loadedEntry.Add(loadedEntry);
-                    // }
-                    // break;
                 case 4:
                     listFiles.ShowLoadedEntries();
                     break;

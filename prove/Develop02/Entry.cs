@@ -24,7 +24,7 @@ public class Entry
 
     static string setPrompt()
     {
-        string[] prompts = {"Question 1","Question 2","Question 3","Question 4","Question 5","Question 6"};
+        string[] prompts = {"Question 1 ","Question 2 ","Question 3 ","Question 4 ","Question 5 ","Question 6 "};
         Random randomGenerator = new Random();
         int number = randomGenerator.Next(0,3);
         string prompt = prompts[number];
