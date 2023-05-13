@@ -5,6 +5,7 @@ public class Files
     public List<Entry> _loadedEntry = new List<Entry>();
     public string _saveFileName;
 
+    // public void ShowAllEntries()
     public void ShowEntries()
     {   
         foreach (Entry i in _addEntry)
@@ -38,7 +39,7 @@ public class Files
     
     public void LoadFileNames(){
         string[] lines = System.IO.File.ReadAllLines("filenames.txt");
-        Console.WriteLine("Available Files");
+        Console.WriteLine("Select one of the Available Files");
         foreach(string line in lines){
             Console.WriteLine($"{line}");
         }
@@ -86,3 +87,4 @@ public class Files
         _addEntry.Clear();
     }       
 }
+
