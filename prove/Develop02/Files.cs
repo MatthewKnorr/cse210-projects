@@ -22,7 +22,7 @@ public class Files
         foreach (Entry i in _loadedEntry)
         {
             i.Display();
-        }
+        }   
     }
 
     // Displays local file names 
