@@ -1,29 +1,37 @@
-using System;
+public class Word
+{   
+    // Define private fields to store text of words and hidden status 
+    private string _text;
+    private bool _hidden;
 
-// Contains the logic for tracking singles words Hidden status and altaring its value
-class Word
-{
-    // Defines properties Text and Hidden with specific modifers to access get/set behavior
-    public string Text { get; private set; }
-    public bool Hidden { get; private set; }
+    // Defines two properties that povide read only access to the _text and _hidden fields 
+    
+    public string Text
+    {
+        get { return _text; }
+    }
+    // The properties don't have a setter, so their values can only be set internally within the class
+    public bool Hidden
+    {
+        get { return _hidden; }
+    }
 
-    // The constructor Word(str txt) is called when a new instance of the Word class is created.
+    // initializes the _text field with the value of the text parameter & sets the _hidden field to false
     public Word(string text)
     {
-        // Takes the parameter text and assigns its value to the Text property of the Word object
-        Text = text;
-        // It also sets the initial value of the Hidden property to false, indicating that the word is not hidden.
-        Hidden = false;
-    }
-    // method sets the Hidden property of the Word object to true, indicating that the word should be hidden   
-    public void Hide()
-    {
-        Hidden = true;
+        _text = text;
+        _hidden = false;
     }
 
-    // Method sets the Hidden property of the Word object to false, indicating that the word should be revealed
+    // method to change the hidden status of the word
+    public void Hide()
+    {
+        _hidden = true;
+    }
+
+    // method to change the hidden status of the word
     public void Reveal()
     {
-        Hidden = false;
+        _hidden = false;
     }
 }

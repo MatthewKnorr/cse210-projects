@@ -1,21 +1,26 @@
 using System;
-// Creates type safe collections
 using System.Collections.Generic;
-// Used to quiery and manipulate data
 using System.Linq;
 
-class Scripture
+public class Scripture
 {
-    private List<Word> words;
-    private Random random;
+    private List<Word> _words;
+    private Random _random;
 
     public Reference Reference { get; private set; }
 
-    public Scripture(string reference, string text)
+    public Scripture(string[] references, string[] texts)
     {
-        Reference = new Reference(reference);
-        words = text.Split(' ').Select(word => new Word(word)).ToList();
-        random = new Random();
+        if (references.Length != texts.Length)
+        {
+            throw new ArgumentException("The number of references must match the number of texts.");
+        }
+
+        _random = new Random();
+        int index = _random.Next(references.Length);
+
+        Reference = new Reference(references[index]);
+        _words = texts[index].Split(' ').Select(word => new Word(word)).ToList();
     }
 
     public void Display()
@@ -23,7 +28,7 @@ class Scripture
         Console.Clear();
         Console.WriteLine($"{Reference.Value}\n");
 
-        foreach (Word word in words)
+        foreach (Word word in _words)
         {
             Console.Write(word.Hidden ? "____ " : $"{word.Text} ");
         }
@@ -33,12 +38,12 @@ class Scripture
 
     public void HideRandomWords(int count)
     {
-        List<Word> visibleWords = words.Where(word => !word.Hidden).ToList();
+        List<Word> visibleWords = _words.Where(word => !word.Hidden).ToList();
         int wordsToHide = Math.Min(count, visibleWords.Count);
 
         for (int i = 0; i < wordsToHide; i++)
         {
-            int index = random.Next(visibleWords.Count);
+            int index = _random.Next(visibleWords.Count);
             visibleWords[index].Hide();
             visibleWords.RemoveAt(index);
         }
@@ -46,6 +51,6 @@ class Scripture
 
     public bool AllWordsHidden()
     {
-        return words.All(word => word.Hidden);
+        return _words.All(word => word.Hidden);
     }
 }
