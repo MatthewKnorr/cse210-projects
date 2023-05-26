@@ -1,48 +1,38 @@
 using System;
-
 public class Program
 {
-    static void Main()
+    static void Main() // Declares & initializes two arrays:
     {
-        // Declares & initializes two arrays: verseReferences and verseTexts containing references and texts of different verses
-        string[] verseReferences = new string[]
+        string[] verseReferences = new string[] // verseReferences containing verse references
         {
             "John 3:16",
             "Matthew 5:16",
             "Psalm 23:1"
         };
 
-        string[] verseTexts = new string[]
+        string[] verseTexts = new string[] // verseTexts containing texts verses
         {
             "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life.",
             "Let your light so shine before men, that they may see your good works and glorify your Father in heaven.",
             "The Lord is my shepherd; I shall not want."
         };
-    
-        // This initializes the scripture object by creating a instance of Scripture passing verseRefr and verseTxt to constructer as arrgs.
-        Scripture scripture = new Scripture(verseReferences, verseTexts);
-        // The value of how many words are hidden each action
-        int wordsToHide = 2;
 
+        Scripture scripture = new Scripture(verseReferences, verseTexts); // Initializes scripture obj  passing verseRefr and verseTxt to constructer as arrgs
+        int wordsToHide = 2; // The value of how many words are hidden each action
 
-        // Enters while loop continuing until all words in verse are hidden
-        // Checks loop condition by ussing ALlWordsHidden method of the Scripture Obj
-        while (!scripture.AllWordsHidden())
+        // Scripture Obj loop condtion check by using AllWordsHidden until all are hidden
+        while (!scripture.AllWordsHidden()) // Loop continuing until all words in verse are hidden
         {
-            // Displays the scripture verse
-            scripture.Display();
-            // Promtpts user to enter or type quit
-            Console.WriteLine("Press enter to continue or type 'quit' to exit.");
-            // Stores it input variable
-            string input = Console.ReadLine();
+            scripture.Display(); // Displays the scripture verse
+            Console.WriteLine("Press enter to continue or type 'quit' to exit."); // Promtpts user to enter or type quit
+            string input = Console.ReadLine(); // Stores it in input variable
 
-            // Case insentive check to break loop
-            if (input.ToLower() == "quit")
+            if (input.ToLower() == "quit") // Case insentive check to break loop
             {
                 break;
             }
-            // If action = enter run below line
-            scripture.HideRandomWords(wordsToHide);
+            
+            scripture.HideRandomWords(wordsToHide); // If action = enter run below line
         }
     }
 }

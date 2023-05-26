@@ -1,18 +1,13 @@
 public class Reference
 {
-    // Class has a private attribute _value of type string used for storing reference value.
-    private string _value;
+    private string _value; // Private attribute string used for storing reference value
 
-    //  It uses a getter method to return the _value when accessed.
-    public string Value
+    public string Value // Uses a getter to return _value
     {
-        // Uses a getter to return _value
         get { return _value; }
     }   
-    // A constructor Refr() taking parems of string reference
-    public Reference(string reference)
+    public Reference(string reference)  //Constructor taking string params of reference
     {
-        // Value of reference is assigned to the _value
-        _value = reference;
+        _value = reference; // Reference is assigned to the _value
     }
 }

@@ -1,11 +1,7 @@
-public class Word
-{   
-    // Define private fields to store text of words and hidden status 
-    private string _text;
-    private bool _hidden;
-
-    // Defines two properties that povide read only access to the _text and _hidden fields 
-    
+public class Word // Provide read only access
+{
+    private string _text; // Private _text field to store text of words
+    private bool _hidden; // Private _hidden field to store hidden status 
     public string Text
     {
         get { return _text; }
@@ -16,21 +12,18 @@ public class Word
         get { return _hidden; }
     }
 
-    // initializes the _text field with the value of the text parameter & sets the _hidden field to false
     public Word(string text)
     {
         _text = text;
-        _hidden = false;
+        _hidden = false; 
     }
 
-    // method to change the hidden status of the word
-    public void Hide()
+    public void Hide() // method to change the hidden status of the word
     {
         _hidden = true;
     }
 
-    // method to change the hidden status of the word
-    public void Reveal()
+    public void Reveal() // method to change the hidden status of the word
     {
         _hidden = false;
     }
