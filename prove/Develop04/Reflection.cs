@@ -10,7 +10,7 @@ public class Reflection : Activity
     private string _message = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
     public Reflection()
     {
-        base.Begin(_message,_activity);
+        base.Start(_message,_activity);
         Prompt();
         base.Finish();
     }
@@ -24,8 +24,8 @@ public class Reflection : Activity
         Console.ReadLine();
         Console.WriteLine("Now ponder on each of the following questions as they related tothis experience.\n");
         base.Countdown();
-        bool test = false;
-        while(!test)
+        bool looper = false;
+        while(!looper)
         {
             int randomNum = base.Generator(_questions.Length);
             if (_used.Contains(randomNum))
@@ -35,9 +35,9 @@ public class Reflection : Activity
             else
             {
                 Console.WriteLine($">{_questions[randomNum]}");
-                base.Spinner();
+                base.SpinningWheel();
                 _used.Add(randomNum);
-                test = base.TimeUp(_start);
+                looper = base.TimeUp(_start);
             }
         }
     }

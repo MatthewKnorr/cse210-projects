@@ -1,17 +1,17 @@
 public class Activity
 {
-    private bool _timesUp = false; // Tells cycle if its time to end
-    private int _howLong; // User input for cycle run time
+    private bool _timeCheck = false; // Tells cycle if its time to end
+    private int _timeLength; // User input for cycle run time
     private int _delay;
     private string _activity;
-    private string _mainMessage;
+    private string _messages;
 
 
     public Activity() { }
 
-    protected void Begin(string message, string activity)
+    protected void Start(string message, string activity)
     {
-        _mainMessage = message;
+        _messages = message;
         _activity = activity;
         StartMessage();
     }
@@ -19,42 +19,42 @@ public class Activity
     protected void Finish()
     {
         Console.WriteLine("Well Done\n");
-        Spinner();
+        SpinningWheel();
         EndMessage();
-        Spinner();
+        SpinningWheel();
     }
 
     private void StartMessage()
     {
         Console.Clear();
         Console.WriteLine($"Welcome to the {_activity} Activity\n");
-        Console.WriteLine(_mainMessage + '\n');
+        Console.WriteLine(_messages + '\n');
     }
 
     private void EndMessage()
     {
-        Console.WriteLine($"You have completed another {_howLong - _delay} seconds of the {_activity} Activity.");
+        Console.WriteLine($"You have completed another {_timeLength - _delay} seconds of the {_activity} Activity.");
     }
 
     protected DateTime SetTimer(int delay)
     {
         _delay = delay;
         Console.WriteLine("How long, in seconds would you like you session to be?");
-        _howLong = int.Parse(Console.ReadLine());
-        _howLong += _delay;
+        _timeLength = int.Parse(Console.ReadLine());
+        _timeLength += _delay;
         DateTime startTime = DateTime.Now;
         return startTime;
     }
 
     protected bool TimeUp(DateTime start)
     {
-        DateTime endTime = start.AddSeconds(_howLong);
+        DateTime endTime = start.AddSeconds(_timeLength);
         DateTime testTime = DateTime.Now;
         if (testTime > endTime)
         {
-            _timesUp = true;
+            _timeCheck = true;
         }
-        return _timesUp;
+        return _timeCheck;
     }
 
     protected void Countdown()
@@ -67,7 +67,7 @@ public class Activity
         }
     }
 
-    protected void Spinner()
+    protected void SpinningWheel()
     {
         for (int i = 3; i > 0; i--)
         {

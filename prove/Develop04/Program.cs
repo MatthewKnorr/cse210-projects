@@ -7,9 +7,9 @@ class Program
 
         while (runApp)
         {
-            Console.Write("Menu options:\n 1. Start Breathing Activity\n 3. Start Listing Activity\n 4. Quit\nSelect a choice from the menu ");
-            string option = Console.ReadLine();
-            switch (option)
+            Console.Write("Menu options:\n 1. Start Breathing Activity\n 2. Start Reflecting Activity\n 3. Start Listing Activity\n 4. Quit\nSelect a choice from the menu ");
+            string menuOptions = Console.ReadLine();
+            switch (menuOptions)
             {
                 case "1":
                     Activity activity = new Breathing();
@@ -29,7 +29,7 @@ class Program
                     break;
 
                 default:
-                    Console.WriteLine($"{option} is not valid entry.");
+                    Console.WriteLine($"{menuOptions} is not valid entry.");
                     continue;
             }
         }

@@ -9,7 +9,7 @@ public class Listing : Activity
     private string _message = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
    public Listing()
    {
-    base.Begin(_message, _activity);
+    base.Start(_message, _activity);
     MakeListing();
     base.Finish();
    }
@@ -17,7 +17,7 @@ public class Listing : Activity
    {
     _start = base.SetTimer(10);
     Console.WriteLine("Brace Ye Self");
-    base.Spinner();
+    base.SpinningWheel();
     Console.WriteLine("\nList as many responses as you can to the following prompt: ");
     base.Countdown();
     int number = base.Generator(_prompts.Length);// call random number generator to select an index position

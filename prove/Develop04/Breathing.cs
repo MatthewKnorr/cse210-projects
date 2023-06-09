@@ -6,7 +6,7 @@ public class Breathing: Activity
 
     public Breathing()
     {
-        base.Begin(_message, _activity);
+        base.Start(_message, _activity);
         Cycle();
         base.Finish();
     }
@@ -14,8 +14,8 @@ public class Breathing: Activity
     public void Cycle()
     {
         _start = base.SetTimer(5); // Starts a timer/adds delay for animations and countdowns
-        bool test = false;
-        while(!test)
+        bool looper = false;
+        while(!looper)
         {
             for (int i = 5; i > 0; i--)
             {
@@ -30,7 +30,7 @@ public class Breathing: Activity
                 Console.Write("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
             }
             Console.WriteLine("\n");
-            test = base.TimeUp(_start);
+            looper = base.TimeUp(_start);
         }   
     }
 
