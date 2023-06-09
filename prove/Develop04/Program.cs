@@ -1,55 +1,37 @@
 using System;
-
-namespace MindfulnessApp
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Menu menu = new Menu();
-            menu.ShowMenu();
-        }
-    }
+        bool runApp = true; // Runs the main loop until user quits
 
-    class Menu
-    {
-        public void ShowMenu()
+        while (runApp)
         {
-            while (true)
+            Console.Write("Menu options:\n 1. Start Breathing Activity\n 3. Start Listing Activity\n 4. Quit\nSelect a choice from the menu ");
+            string option = Console.ReadLine();
+            switch (option)
             {
-                Console.WriteLine("==== Mindfulness App ====");
-                Console.WriteLine("1. Breathing Activity");
-                Console.WriteLine("2. Reflection Activity");
-                Console.WriteLine("3. Listing Activity");
-                Console.WriteLine("0. Exit");
-                Console.Write("Enter your choice: ");
+                case "1":
+                    Activity activity = new Breathing();
+                    break;
 
-                int choice = Convert.ToInt32(Console.ReadLine());
+                case "2":
+                    Activity activity2 = new Reflection();
+                    break;
 
-                switch (choice)
-                {
-                    case 1:
-                        BreathingActivity breathingActivity = new BreathingActivity();
-                        breathingActivity.Start();
-                        break;
-                    case 2:
-                        ReflectionActivity reflectionActivity = new ReflectionActivity();
-                        reflectionActivity.Start();
-                        break;
-                    case 3:
-                        ListingActivity listingActivity = new ListingActivity();
-                        listingActivity.Start();
-                        break;
-                    case 0:
-                        Environment.Exit(0);
-                        break;
-                    default:
-                        Console.WriteLine("Invalid choice. Please try again.");
-                        break;
-                }
+                case "3":
+                    Activity activity3 = new Listing();
+                    break;
+
+                case "4":
+                    runApp = false;
+                    Console.WriteLine("Thanks for using the Mindfulness App.\n");
+                    break;
+
+                default:
+                    Console.WriteLine($"{option} is not valid entry.");
+                    continue;
             }
         }
     }
-    
-    // Rest of the activity classes...
 }
