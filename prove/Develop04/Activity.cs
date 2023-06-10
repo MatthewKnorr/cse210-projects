@@ -13,25 +13,25 @@ public class Activity
     {
         _messages = message;
         _activity = activity;
-        StartMessage();
+        StartDisplay();
     }
 
     protected void Finish()
     {
         Console.WriteLine("Well Done\n");
         SpinningWheel();
-        EndMessage();
+        EndDisplay();
         SpinningWheel();
     }
 
-    private void StartMessage()
+    private void StartDisplay()
     {
         Console.Clear();
         Console.WriteLine($"Welcome to the {_activity} Activity\n");
         Console.WriteLine(_messages + '\n');
     }
 
-    private void EndMessage()
+    private void EndDisplay()
     {
         Console.WriteLine($"You have completed another {_timeLength - _delay} seconds of the {_activity} Activity.");
     }
