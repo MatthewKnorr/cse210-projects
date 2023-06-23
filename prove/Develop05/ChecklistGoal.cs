@@ -1,30 +1,33 @@
 public class ChecklistGoal : Goal
 {
-    private int completionCount;
-    private int desiredCount;
-    private int bonusPoints;
+    public int DesiredCount { get; }
+    public int BonusPoints { get; }
+    public int CompletionCount { get; private set; }
 
-    public ChecklistGoal(string name, int points, int desiredCount, int bonusPoints)
+    public ChecklistGoal(string name, int desiredCount, int bonusPoints) : base(name)
     {
-        Name = name;
-        Points = points;
-        this.desiredCount = desiredCount;
-        this.bonusPoints = bonusPoints;
+        DesiredCount = desiredCount;
+        BonusPoints = bonusPoints;
+        CompletionCount = 0;
     }
 
     public override void MarkAsComplete()
     {
-        completionCount++;
-
-        if (completionCount >= desiredCount)
+        CompletionCount++;
+        if (CompletionCount >= DesiredCount)
         {
-            IsCompleted = true;
-            Points += bonusPoints;
+            SetIsCompleted(true);
+            SetPoints(GetPoints() + BonusPoints);
         }
     }
 
-    public override string GetProgress()
+    public int GetCompletionCount()
     {
-        return $"Completed {completionCount}/{desiredCount} times";
+        return CompletionCount;
+    }
+
+    public override string ToString()
+    {
+        return $"Checklist Goal - {Name} ({CompletionCount}/{DesiredCount}) [Points: {GetPoints()}, Completed: {GetIsCompleted()}]";
     }
 }

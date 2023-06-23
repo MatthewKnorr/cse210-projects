@@ -1,0 +1,16 @@
+SimpleGoal
+Run a Marathon
+True
+1000
+ChecklistGoal
+Read Scriptures
+True
+0
+0
+7
+500
+EternalGoal
+Exercise
+True
+0
+0

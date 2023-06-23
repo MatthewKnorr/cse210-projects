@@ -1,18 +1,16 @@
 public class EternalGoal : Goal
 {
-    public EternalGoal(string name, int points)
+    public EternalGoal(string name) : base(name)
     {
-        Name = name;
-        Points = points;
     }
 
     public override void MarkAsComplete()
     {
-        // Eternal goals are never completed
+        // The completion of an eternal goal doesn't change its completion status or points
     }
 
-    public override string GetProgress()
+    public override string ToString()
     {
-        return "In progress";
+        return $"Eternal Goal - {Name} [Points: {GetPoints()}, Completed: {GetIsCompleted()}]";
     }
 }
