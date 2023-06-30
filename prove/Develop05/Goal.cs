@@ -1,37 +1,20 @@
 public abstract class Goal
 {
-    public string Name { get; }
-    private int Points { get; set; }
-    private bool IsCompleted { get; set; }
+    public string Name { get; set; }
+    public int Points { get; set; }
+    public bool IsCompleted { get; set; }
 
-    public Goal(string name)
+    public Goal(string name, int points)
     {
         Name = name;
-        Points = 0;
+        Points = points;
         IsCompleted = false;
     }
 
-    public abstract void MarkAsComplete();
+    public abstract void MarkComplete();
 
-    public int GetPoints()
+    public virtual string GetCompletionStatus()
     {
-        return Points;
+        return IsCompleted ? "[X]" : "[ ]";
     }
-
-    public bool GetIsCompleted()
-    {
-        return IsCompleted;
-    }
-
-    public void SetPoints(int points)
-    {
-        Points = points;
-    }
-
-    public void SetIsCompleted(bool isCompleted)
-    {
-        IsCompleted = isCompleted;
-    }
-
-    public abstract override string ToString();
 }

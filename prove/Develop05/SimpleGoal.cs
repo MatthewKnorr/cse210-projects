@@ -1,17 +1,11 @@
 public class SimpleGoal : Goal
 {
-    public SimpleGoal(string name) : base(name)
+    public SimpleGoal(string name, int points) : base(name, points)
     {
     }
 
-    public override void MarkAsComplete()
+    public override void MarkComplete()
     {
-        SetIsCompleted(true);
-        SetPoints(GetPoints() + 1);
-    }
-
-    public override string ToString()
-    {
-        return $"Simple Goal - {Name} [Points: {GetPoints()}, Completed: {GetIsCompleted()}]";
+        IsCompleted = true;
     }
 }
