@@ -58,7 +58,7 @@ class RandomTitleGenerator
     private List<string> titles;
 
     public RandomTitleGenerator()
-    {
+    { 
         random = new Random();
         titles = new List<string> { "How to Parse a File Python 3", "Introduction to Machine Learning", "Web Development 101", "Mastering C# Programming", "Artificial Intelligence: A Beginner's Guide", "Game Development with Unity", "Creating Stunning Visual Effects", "Photography Tips and Techniques" };
     }

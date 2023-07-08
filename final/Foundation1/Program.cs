@@ -56,7 +56,7 @@ class Program
         videos.Add(video1);
 
         int randomNumberTwo = rng.GenerateNumber(125, 500);
-        string randomNameTwo = nameSelector.SelectRandomName();
+        string randomNameTwo = nameSelector.SelectRandomName(); 
 
         Video video2 = new Video(titleGenerator.GenerateRandomTitle(), randomNameTwo, randomNumberTwo);
         video2.Comments.Add(new Comment(nameSelector.SelectRandomName(), commentGenerator.GenerateRandomComment()));
