@@ -34,39 +34,6 @@ class Comment
     }
 }
 
-class RandomNumberGenerator
-{
-    private Random random;
-
-    public RandomNumberGenerator()
-    {
-        random = new Random();
-    }
-
-    public int GenerateNumber(int minValue, int maxValue)
-    {
-        return random.Next(minValue, maxValue + 1);
-    }
-}
-
-class RandomNameSelector
-{
-    private Random random;
-    private List<string> names;
-
-    public RandomNameSelector(List<string> nameList)
-    {
-        random = new Random();
-        names = nameList;
-    }
-
-    public string SelectRandomName()
-    {
-        int index = random.Next(names.Count);
-        return names[index];
-    }
-}
-
 class Program
 {
     static void Main()
@@ -75,31 +42,35 @@ class Program
         List<Video> videos = new List<Video>();
 
         RandomNumberGenerator rng = new RandomNumberGenerator();
-        int randomNumberOne = rng.GenerateNumber(800, 2500);
+        RandomNameSelector nameSelector = new RandomNameSelector();
+        RandomCommentGenerator commentGenerator = new RandomCommentGenerator();
+        RandomTitleGenerator titleGenerator = new RandomTitleGenerator();
 
-        List<string> names = new List<string> { "ShadowSlayer", "RapidFire", "NinjaGamer", "SavageQueen", "CyberWolf", "PhantomStrike", "EpicGamer", "PixelMaster", "StealthSniper", "LunarKnight", "Frostbite", "XenoBlade", "ThunderStrike", "SpectralSorcerer", "VenomousViper" };
-        RandomNameSelector nameSelector = new RandomNameSelector(names);
+        int randomNumberOne = rng.GenerateNumber(800, 2500);
         string randomNameOne = nameSelector.SelectRandomName();
 
-        Video video1 = new Video("How to Parse a File Python 3", randomNameOne, randomNumberOne);
-        video1.Comments.Add(new Comment(nameSelector.SelectRandomName(), "Comment 1 for video 1"));
-        video1.Comments.Add(new Comment(nameSelector.SelectRandomName(), "Comment 2 for video 1"));
-        video1.Comments.Add(new Comment(nameSelector.SelectRandomName(), "Comment 3 for video 1"));
+        Video video1 = new Video(titleGenerator.GenerateRandomTitle(), randomNameOne, randomNumberOne);
+        video1.Comments.Add(new Comment(nameSelector.SelectRandomName(), commentGenerator.GenerateRandomComment()));
+        video1.Comments.Add(new Comment(nameSelector.SelectRandomName(), commentGenerator.GenerateRandomComment()));
+        video1.Comments.Add(new Comment(nameSelector.SelectRandomName(), commentGenerator.GenerateRandomComment()));
         videos.Add(video1);
 
         int randomNumberTwo = rng.GenerateNumber(125, 500);
         string randomNameTwo = nameSelector.SelectRandomName();
 
-        Video video2 = new Video("Video 2", randomNameTwo, randomNumberTwo);
-        video2.Comments.Add(new Comment(nameSelector.SelectRandomName(), "Comment 1 for video 2"));
-        video2.Comments.Add(new Comment(nameSelector.SelectRandomName(), "Comment 2 for video 2"));
+        Video video2 = new Video(titleGenerator.GenerateRandomTitle(), randomNameTwo, randomNumberTwo);
+        video2.Comments.Add(new Comment(nameSelector.SelectRandomName(), commentGenerator.GenerateRandomComment()));
+        video2.Comments.Add(new Comment(nameSelector.SelectRandomName(), commentGenerator.GenerateRandomComment()));
         videos.Add(video2);
 
         int randomNumberThree = rng.GenerateNumber(400, 1300);
         string randomNameThree = nameSelector.SelectRandomName();
 
-        Video video3 = new Video("Video 3", randomNameThree, randomNumberThree);
-        video3.Comments.Add(new Comment(nameSelector.SelectRandomName(), "Comment 1 for video 3"));
+        Video video3 = new Video(titleGenerator.GenerateRandomTitle(), randomNameThree, randomNumberThree);
+        video3.Comments.Add(new Comment(nameSelector.SelectRandomName(), commentGenerator.GenerateRandomComment()));
+        video3.Comments.Add(new Comment(nameSelector.SelectRandomName(), commentGenerator.GenerateRandomComment()));
+        video3.Comments.Add(new Comment(nameSelector.SelectRandomName(), commentGenerator.GenerateRandomComment()));
+        video3.Comments.Add(new Comment(nameSelector.SelectRandomName(), commentGenerator.GenerateRandomComment()));
         videos.Add(video3);
 
         // Display video information
