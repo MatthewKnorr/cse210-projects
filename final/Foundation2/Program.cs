@@ -1,161 +1,6 @@
 using System;
 using System.Collections.Generic;
 
-class Order
-{
-    private List<Product> products;
-    private Customer customer;
-
-    public Order(List<Product> products, Customer customer)
-    {
-        this.products = products;
-        this.customer = customer;
-    }
-
-    public decimal CalculateTotalCost()
-    {
-        decimal totalCost = 0;
-        foreach (Product product in products)
-        {
-            totalCost += product.Price * product.Quantity;
-        }
-
-        // Add shipping cost based on customer location
-        if (customer.IsInUSA())
-        {
-            totalCost += 5;
-        }
-        else
-        {
-            totalCost += 35;
-        }
-
-        return totalCost;
-    }
-
-    public string GetPackingLabel()
-    {
-        string packingLabel = "Packing Label:\n";
-        foreach (Product product in products)
-        {
-            packingLabel += $"Product ID: {product.ProductId}, Name: {product.Name}\n";
-        }
-
-        return packingLabel;
-    }
-
-    public string GetShippingLabel()
-    {
-        string shippingLabel = "Shipping Label:\n";
-        shippingLabel += $"Name: {customer.Name}\n";
-        shippingLabel += customer.Address.GetFormattedAddress();
-
-        return shippingLabel;
-    }
-}
-
-class Product
-{
-    private string name;
-    private string productId;
-    private decimal price;
-    private int quantity;
-
-    public string Name
-    {
-        get { return name; }
-        set { name = value; }
-    }
-
-    public string ProductId
-    {
-        get { return productId; }
-        set { productId = value; }
-    }
-
-    public decimal Price
-    {
-        get { return price; }
-        set { price = value; }
-    }
-
-    public int Quantity
-    {
-        get { return quantity; }
-        set { quantity = value; }
-    }
-}
-
-class Customer
-{
-    private string name;
-    private Address address;
-
-    public string Name
-    {
-        get { return name; }
-        set { name = value; }
-    }
-
-    public Address Address
-    {
-        get { return address; }
-        set { address = value; }
-    }
-
-    public bool IsInUSA()
-    {
-        return address.IsInUSA();
-    }
-}
-
-class Address
-{
-    private string streetAddress;
-    private string city;
-    private string state;
-    private string country;
-
-    public string StreetAddress
-    {
-        get { return streetAddress; }
-        set { streetAddress = value; }
-    }
-
-    public string City
-    {
-        get { return city; }
-        set { city = value; }
-    }
-
-    public string State
-    {
-        get { return state; }
-        set { state = value; }
-    }
-
-    public string Country
-    {
-        get { return country; }
-        set { country = value; }
-    }
-
-    public bool IsInUSA()
-    {
-        return country == "USA";
-    }
-
-    public string GetFormattedAddress()
-    {
-        string formattedAddress = $"Street Address: {streetAddress}\n";
-        formattedAddress += $"City: {city}\n";
-        formattedAddress += $"State/Province: {state}\n";
-        formattedAddress += $"Country: {country}";
-
-        return formattedAddress;
-    }
-}
-
 class Program
 {
     static void Main()
@@ -163,46 +8,46 @@ class Program
         // Create products
         Product product1 = new Product
         {
-            Name = "Product 1",
-            ProductId = "P1",
-            Price = 10,
-            Quantity = 2
+            Name = RandomGenerator.GetRandomItem(new List<string> { "TP-4567: Fluoride Toothpaste", "SK-1234: Cotton Socks (Pack of 3)", "NC-7890: Stainless Steel Nail Clippers" }),
+            ProductId = RandomGenerator.GenerateRandomId(),
+            Price = RandomGenerator.GenerateRandomPrice(),
+            Quantity = RandomGenerator.GenerateRandomQuantity()
         };
 
         Product product2 = new Product
         {
-            Name = "Product 2",
-            ProductId = "P2",
-           Price = 15,
-            Quantity = 3
+            Name = RandomGenerator.GetRandomItem(new List<string> { "WT-6789: Slim Cardholder Wallet", "KC-7890: Keychain with LED Light", "HP-1234: Over-ear Bluetooth Headphones" }),
+            ProductId = RandomGenerator.GenerateRandomId(),
+            Price = RandomGenerator.GenerateRandomPrice(),
+            Quantity = RandomGenerator.GenerateRandomQuantity()
         };
 
         // Create customers
         Address address1 = new Address
         {
-            StreetAddress = "123 Main Street",
-            City = "New York",
-            State = "NY",
-            Country = "USA"
+            StreetAddress = RandomGenerator.GetRandomItem(RandomGenerator.StreetNames),
+            City = RandomGenerator.GetRandomItem(RandomGenerator.Cities),
+            State = RandomGenerator.GetRandomItem(RandomGenerator.States),
+            Country = RandomGenerator.GetRandomItem(RandomGenerator.Countries)
         };
 
         Customer customer1 = new Customer
         {
-            Name = "Customer 1",
+            Name = RandomGenerator.GetRandomItem(RandomGenerator.CustomerNames),
             Address = address1
         };
 
         Address address2 = new Address
         {
-            StreetAddress = "456 Elm Street",
-            City = "Los Angeles",
-            State = "CA",
-            Country = "USA"
+            StreetAddress = RandomGenerator.GetRandomItem(RandomGenerator.StreetNames),
+            City = RandomGenerator.GetRandomItem(RandomGenerator.Cities),
+            State = RandomGenerator.GetRandomItem(RandomGenerator.States),
+            Country = RandomGenerator.GetRandomItem(RandomGenerator.Countries)
         };
 
         Customer customer2 = new Customer
         {
-            Name = "Customer 2",
+            Name = RandomGenerator.GetRandomItem(RandomGenerator.CustomerNames),
             Address = address2
         };
 
